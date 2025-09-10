@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quick Support Business Solution</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Open+Sans&display=swap');
+
+    :root {
+      --primary-blue: #0052cc;
+      --primary-blue-dark: #003d99;
+      --accent-warm: #ff8c42;
+      --background-light: #f0f3f7;
+      --card-bg: #e0e5ec;
+      --shadow-light: rgba(255, 255, 255, 0.7);
+      --shadow-dark: rgba(163, 177, 198, 0.6);
+      --text-primary: #222;
+      --text-secondary: #555;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      background: var(--background-light);
+      color: var(--text-primary);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* Sticky header with backdrop blur and shadow */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255 255 255 / 0.85);
+      backdrop-filter: saturate(180%) blur(10px);
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0 0 0 / 0.1);
+      padding: 25px 20px;
+      text-align: center;
+      user-select: none;
+      transition: padding 0.3s ease;
+    }
+    header.shrink {
+      padding: 15px 20px;
+    }
+    header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 2.4rem;
+      color: var(--primary-blue-dark);
+      margin: 0;
+      letter-spacing: 1.4px;
+    }
+    header p {
+      margin: 5px 0 0;
+      font-weight: 600;
+      color: var(--accent-warm);
+      font-size: 1.15rem;
+      letter-spacing: 0.6px;
+    }
+
+    /* Navigation bar with neumorphic buttons */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+      user-select: none;
+    }
+
+    nav a {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 12px 26px;
+      font-weight: 700;
+      color: var(--primary-blue-dark);
+      font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+      font-size: 1.1rem;
+      box-shadow:
+        6px 6px 10px var(--shadow-dark),
+        -6px -6px 12px var(--shadow-light);
+      transition: box-shadow 0.3s ease, color 0.3s ease, transform 0.25s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    nav a:hover, nav a:focus {
+      color: var(--accent-warm);
+      box-shadow:
+        inset 6px 6px 10px var(--shadow-dark),
+        inset -6px -6px 12px var(--shadow-light);
+      transform: translateY(-4px);
+      outline: none;
+    }
+
+    section {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+      user-select: none;
+    }
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 2.2rem;
+      color: var(--primary-blue);
+      margin-bottom: 28px;
+      border-left: 6px solid var(--accent-warm);
+      padding-left: 14px;
+      filter: drop-shadow(0 0 2px var(--accent-warm));
+    }
+
+    /* Neumorphic cards for services and clients */
+    .card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 22px 24px;
+      box-shadow:
+        8px 8px 15px var(--shadow-dark),
+        -8px -8px 15px var(--shadow-light);
+      transition: box-shadow 0.4s ease, transform 0.3s ease;
+      user-select: none;
+    }
+    .card:hover, .card:focus-within {
+      box-shadow:
+        inset 8px 8px 15px var(--shadow-dark),
+        inset -8px -8px 15px var(--shadow-light);
+      transform: translateY(-6px);
+      outline: none;
+      cursor: default;
+    }
+
+    /* Services section */
+    .services {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .service-item {
+      flex: 1 1 300px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      user-select: none;
+    }
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.12));
+      border-radius: 18px;
+      background: white;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+    .service-item:hover .service-icon, .service-item:focus-within .service-icon {
+      transform: scale(1.1);
+    }
+    .service-content h3 {
+      margin: 0 0 6px 0;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: var(--primary-blue-dark);
+      font-size: 1.35rem;
+      user-select: text;
+    }
+    .service-content p {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      user-select: text;
+    }
+
+    /* Clients section */
+    .clients-list {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .client {
+      flex: 1 1 200px;
+      text-align: center;
+      color: var(--primary-blue-dark);
+      user-select: none;
+    }
+    .client img {
+      max-width: 90px;
+      margin-bottom: 15px;
+      filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.15));
+      border-radius: 20px;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .client:hover img, .client:focus-within img {
+      transform: scale(1.12);
+    }
+    .client-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      user-select: text;
+    }
+
+    /* Photo Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      user-select: none;
+    }
+    .gallery-item {
+      border-radius: 20px;
+      box-shadow:
+        8px 8px 15px var(--shadow-dark),
+        -8px -8px 15px var(--shadow-light);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+    }
+    .gallery-item:hover, .gallery-item:focus-within {
+      box-shadow:
+        inset 8px 8px 18px var(--shadow-dark),
+        inset -8px -8px 18px var(--shadow-light);
+      transform: translateY(-8px);
+      outline: none;
+    }
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+      transition: transform 0.45s ease;
+    }
+    .gallery-item:hover img, .gallery-item:focus-within img {
+      transform: scale(1.1);
+    }
+
+    /* Contact Form */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      user-select: none;
+    }
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--primary-blue-dark);
+      font-size: 1.1rem;
+      user-select: text;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 1.1rem;
+      border-radius: 20px;
+      border: none;
+      box-shadow:
+        8px 8px 15px var(--shadow-dark),
+        -8px -8px 15px var(--shadow-light);
+      transition: box-shadow 0.4s ease;
+      font-family: 'Open Sans', sans-serif;
+      resize: vertical;
+      color: var(--text-primary);
+      user-select: text;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow:
+        inset 6px 6px 12px var(--shadow-dark),
+        inset -6px -6px 12px var(--shadow-light);
+    }
+    textarea {
+      min-height: 130px;
+    }
+    button {
+      margin-top: 18px;
+      cursor: pointer;
+      background: var(--accent-warm);
+      border-radius: 30px;
+      border: none;
+      padding: 16px 34px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      box-shadow:
+        8px 8px 15px rgb(255 140 66 / 0.6),
+        -8px -8px 15px rgb(255 140 66 / 0.6);
+      transition: box-shadow 0.3s ease, transform 0.25s ease;
+      font-family: 'Poppins', sans-serif;
+      user-select: none;
+    }
+    button:hover, button:focus {
+      box-shadow:
+        inset 6px 6px 12px rgb(255 140 66 / 0.6),
+        inset -6px -6px 12px rgb(255 140 66 / 0.6);
+      transform: translateY(-4px);
+      outline: none;
+    }
+
+    #formMessage {
+      text-align: center;
+      color: #2b8a3e;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 14px;
+      user-select: text;
+      display: none;
+    }
+
+    /* Floating contact button */
+    #floatContactBtn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--accent-warm);
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      box-shadow:
+        6px 6px 14px rgb(255 140 66 / 0.7),
+        -6px -6px 14px rgb(255 140 66 / 0.7);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      z-index: 110;
+      user-select: none;
+    }
+    #floatContactBtn:hover, #floatContactBtn:focus {
+      box-shadow:
+        inset 6px 6px 12px rgb(255 140 66 / 0.9),
+        inset -6px -6px 12px rgb(255 140 66 / 0.9);
+      transform: scale(1.1);
+      outline: none;
+    }
+    #floatContactBtn svg {
+      fill: white;
+      width: 26px;
+      height: 26px;
+      user-select: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 720px) {
+      .services {
+        flex-direction: column;
+        padding: 0;
+      }
+      .service-item {
+        justify-content: flex-start;
+      }
+      nav {
+        gap: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="pageHeader">
+    <h1>Quick Support Business Solution</h1>
+    <p>Your Partner in Outbound & Inbound Calling Solutions</p>
+  </header>
+
+  <nav aria-label="Primary navigation">
+    <a href="#services" tabindex="0">Services</a>
+    <a href="#clients" tabindex="0">Clients</a>
+    <a href="#gallery" tabindex="0">Gallery</a>
+    <a href="#contact" tabindex="0">Contact</a>
+  </nav>
+
+  <main>
+    <section id="services" class="services" aria-labelledby="servicesTitle">
+      <h2 id="servicesTitle">Our Services</h2>
+      <div class="service-item card" tabindex="0" role="region" aria-labelledby="outboundTitle">
+        <img src="https://cdn-icons-png.flaticon.com/512/2919/2919600.png" alt="Phone outbound call icon" class="service-icon" />
+        <div class="service-content">
+          <h3 id="outboundTitle">Outbound Calling Solutions</h3>
+          <p>Professional outbound call services for sales, surveys, reminders, and promotions tailored to reach your customers effectively.</p>
+        </div>
+      </div>
+      <div class="service-item card" tabindex="0" role="region" aria-labelledby="inboundTitle">
+        <img src="https://cdn-icons-png.flaticon.com/512/2921/2921828.png" alt="Phone inbound call icon" class="service-icon" />
+        <div class="service-content">
+          <h3 id="inboundTitle">Inbound Calling Solutions</h3>
+          <p>Prompt and knowledgeable inbound call services ensuring excellent customer support and inquiry management.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="clients" class="clients" aria-labelledby="clientsTitle">
+      <h2 id="clientsTitle">Our Clients</h2>
+      <div class="clients-list" role="list">
+        <div class="client card" role="listitem" tabindex="0" aria-label="Chourasiya Tyres client">
+          <img src="https://via.placeholder.com/90x90?text=CT" alt="Chourasiya Tyres Logo" />
+          <div class="client-name">Chourasiya Tyres</div>
+        </div>
+        <div class="client card" role="listitem" tabindex="0" aria-label="Rukmani Motors client">
+          <img src="https://via.placeholder.com/90x90?text=RM" alt="Rukmani Motors Logo" />
+          <div class="client-name">Rukmani Motors</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery" aria-labelledby="galleryTitle">
+      <h2 id="galleryTitle">Photo Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item" tabindex="0" aria-label="Call center representatives working">
+          <img src="https://images.unsplash.com/photo-1581093588401-4a5a6d983f48?auto=format&fit=crop&w=400&q=80" alt="Call center representatives working" />
+        </div>
+        <div class="gallery-item" tabindex="0" aria-label="Customer service agents at desks with headsets">
+          <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=400&q=80" alt="Customer service agents at desks with headsets" />
+        </div>
+        <div class="gallery-item" tabindex="0" aria-label="Team meeting and collaboration in office">
+          <img src="https://images.unsplash.com/photo-1560264418-7410f0a2a4c8?auto=format&fit=crop&w=400&q=80" alt="Team meeting and collaboration in office" />
+        </div>
+        <div class="gallery-item" tabindex="0" aria-label="Close up of headset microphone for call center">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Close up of headset microphone for call center" />
+        </div>
+        <div class="gallery-item" tabindex="0" aria-label="Customer support agent talking on phone">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80" alt="Customer support agent talking on phone" />
+        </div>
+        <div class="gallery-item" tabindex="0" aria-label="Business team discussing chart and analytics">
+          <img src="https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=400&q=80" alt="Business team discussing chart and analytics" />
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contactTitle">
+      <h2 id="contactTitle">Contact Us</h2>
+      <form id="contactForm" aria-label="Contact form for Quick Support Business Solution">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Your full name" required autocomplete="name" />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="Your email address" required autocomplete="email" />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
+
+        <button type="submit" aria-label="Send message">Send Message</button>
+        <p id="formMessage" role="alert"></p>
+      </form>
+    </section>
+  </main>
+
+  <button id="floatContactBtn" aria-label="Quick Contact">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M22 5.72l-5.52-1.43a1 1 0 0 0-1.14.64l-2.23 6.08-2.23-6.08a1 1 0 0 0-1.14-.64L2 5.72A1 1 0 0 0 1 6.6v10.8a1 1 0 0 0 1.23.97l6.3-1.41 3.48 3.48a1 1 0 0 0 1.4 0l5.29-5.82a1 1 0 0 0-.22-1.56z" />
+    </svg>
+  </button>
+
+  <footer>
+    &copy; 2025 Quick Support Business Solution. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Shrink header on scroll
+    const header = document.getElementById('pageHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 70) {
+        header.classList.add('shrink');
+      } else {
+        header.classList.remove('shrink');
+      }
+    });
+
+    // Floating contact button opens contact section smoothly
+    const floatBtn = document.getElementById('floatContactBtn');
+    floatBtn.addEventListener('click', () => {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('name').focus();
+    });
+
+    // Form submission with validation and feedback
+    const form = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formMessage.style.display = 'none';
+
+      if (!form.name.value || !form.email.value || !form.message.value) {
+        alert('Please fill out all fields before submitting.');
+        return;
+      }
+
+      formMessage.textContent = `Thank you, ${form.name.value}! Your message has been received. We will contact you shortly.`;
+      formMessage.style.display = 'block';
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>

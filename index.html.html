@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chaurasiya Tyres Wholesale Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f7fa;
+      margin: 0;
+      color: #222;
+    }
+    header {
+      background: #ff6f00;
+      color: #fff;
+      padding: 22px;
+      text-align: center;
+      font-size: 1.7em;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 2px 12px #dedede;
+      border-radius: 12px;
+    }
+    h2 {
+      color: #ff6f00;
+      margin-top: 0;
+      font-weight: 700;
+    }
+    .card {
+      border: 1px solid #eee;
+      background: #faf9f9;
+      border-radius: 9px;
+      margin: 16px 0;
+      padding: 12px;
+      font-size: 1em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1.06em;
+    }
+    th,
+    td {
+      border: 1px solid #e0e0e0;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    th {
+      background: #ffd580;
+      font-weight: 600;
+    }
+    .btn {
+      background: #ff6f00;
+      color: white;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease;
+      margin-top: 8px;
+    }
+    .btn:hover {
+      background: #ff9000;
+    }
+    .note {
+      background: #e5ffe5;
+      padding: 12px;
+      border-left: 5px solid #4caf50;
+      border-radius: 5px;
+      margin: 20px 0;
+      font-weight: 600;
+      font-size: 1em;
+      color: #2e7d32;
+    }
+
+    /* Tab container */
+    .tab-container {
+      margin-top: 30px;
+    }
+    /* Tab headers */
+    .tabs {
+      display: flex;
+      border-bottom: 3px solid #ff6f00;
+      border-radius: 8px 8px 0 0;
+      overflow-x: auto;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE 10+ */
+    }
+    .tabs::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
+    .tab {
+      flex: 1;
+      padding: 12px 20px;
+      text-align: center;
+      font-weight: 700;
+      color: #666;
+      cursor: pointer;
+      background: #fff3e0;
+      border: 1px solid transparent;
+      border-bottom: none;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .tab:not(:last-child) {
+      border-right: 1px solid #ff6f00;
+    }
+    .tab.active {
+      background: #ff6f00;
+      color: white;
+      border-color: #ff6f00;
+      border-bottom: 3px solid #fff;
+      border-radius: 8px 8px 0 0;
+    }
+    /* Tab panel */
+    .tab-content {
+      border: 1px solid #ff6f00;
+      border-top: none;
+      background: #fff3e0;
+      padding: 20px 25px;
+      border-radius: 0 0 8px 8px;
+      min-height: 220px;
+      box-sizing: border-box;
+    }
+    /* Accordion inside tab content */
+    .accordion-header {
+      background: #2d3436;
+      color: #fff;
+      cursor: pointer;
+      padding: 14px 22px;
+      font-weight: 600;
+      border-bottom: 1px solid #555;
+      transition: background 0.3s;
+      position: relative;
+      font-size: 1.05em;
+      letter-spacing: 0.3px;
+      user-select: none;
+      border-radius: 5px;
+      margin-bottom: 6px;
+    }
+    .accordion-header:hover {
+      background: #636e72;
+    }
+    .accordion-header::after {
+      content: '➕';
+      position: absolute;
+      right: 22px;
+      font-size: 18px;
+      transition: transform 0.3s;
+    }
+    .accordion-header.active::after {
+      content: '➖';
+    }
+    .accordion-content {
+      display: none;
+      background: #f8f9fa;
+      padding: 15px 22px;
+      border-left: 4px solid #d63031;
+      font-size: 1em;
+      line-height: 1.65;
+      border-radius: 0 0 5px 5px;
+      margin-bottom: 12px;
+    }
+    .accordion-content ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 5px 0 0 0;
+    }
+    .accordion-content li {
+      margin: 9px 0;
+      padding-left: 10px;
+      border-left: 3px solid #0984e3;
+      background: #eef7ff;
+      padding: 7px 14px;
+      border-radius: 5px;
+    }
+    .accordion-content p {
+      margin: 6px 0;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .tabs {
+        flex-wrap: nowrap;
+      }
+      .tab {
+        font-size: 0.9em;
+        padding: 12px 15px;
+      }
+      section {
+        padding: 15px 15px;
+        margin: 15px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>🚗 Chaurasiya Tyres Wholesale & Retail | Indore</header>
+
+  <!-- PART 1: Staff Contact Table -->
+  <section id="staff-contact">
+    <h2>सेल्स सपोर्ट और संपर्क नंबर</h2>
+    <table role="grid" aria-label="Staff contact table">
+      <thead>
+        <tr>
+          <th>Staff name</th>
+          <th>Mobile Number</th>
+          <th>Job Role</th>
+          <th>Working Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Shamsher Bhai</td><td>7898546413</td><td>Wholesale team</td><td>Dewas Naka,Indore Old ware house</td></tr>
+        <tr><td>Kajal</td><td>7000442535</td><td>Wholesale team</td><td>Dewas Naka,Indore Old ware house</td></tr>
+        <tr><td>Brajbhan</td><td>9244258739</td><td>Wholesale team</td><td>Dewas Naka,Indore Old ware house</td></tr>
+        <tr><td>Musharraf</td><td>7000432887</td><td>Wholesale team</td><td>Dewas Naka,Indore Old ware house</td></tr>
+        <tr><td>Golu Kushwah</td><td>7879940135</td><td>Retail shop, stock available enquiry</td><td>New Loha Mandi, Dewas Naka</td></tr>
+        <tr><td>Aditya (Store Manager)</td><td>7898213231</td><td>Indore both outlet manager</td><td>New Loha Mandi, Dewas Naka</td></tr>
+        <tr><td>Ram Lakhan</td><td>9589042461</td><td>Only Wholesale</td><td>Halol/ Gujrat</td></tr>
+        <tr><td>Anish</td><td>7227832932</td><td>only for location guidance</td><td>Halol/Gujrat</td></tr>
+        <tr><td>Mehtab</td><td>7680057908</td><td>ट्रक/कमर्शियल टायर</td><td>हलोल, गुजरात</td></tr>
+        <tr><td>शैलेन्द्र सेन (BDE)</td><td>9098579493</td><td>फीडबैक/शिकायत समाधान</td><td>देवास नाका</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note" role="note">
+      <strong>Important:</strong> भोपाल से अगर कोई ग्राहक थोक में टायर लेना चाहता है दुकान के लिए, तो बोलना कि अभी स्टॉक खत्म हो गया है। जैसे ही स्टॉक आएगा तो हम आपको कॉल करके अपडेट कर देंगे।﻿
+    </div>
+  </section>
+
+  <!-- PART 2: Wholesale Lead Form and Price Lists -->
+  <section id="lead-price">
+    <h2>Wholesale Lead Form</h2>
+    <a class="btn" href="https://docs.google.com/forms/d/1YGzIpFqmxG9emwCAKA-JQr1vL2LUiLzz9WF_zpFx5DM/edit" target="_blank" rel="noopener noreferrer">Wholesale Lead Form</a>
+
+  <!-- Tabs container -->
+<div class="tab-container" style="max-width: 900px; margin: 40px auto;">
+  <!-- Tab headers -->
+  <div class="tabs" style="display: flex; border-bottom: 3px solid #ff6f00; border-radius: 8px 8px 0 0; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;">
+    <style>
+      .tabs::-webkit-scrollbar {
+          display: none;
+      }
+    </style>
+    <div class="tab active" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-wholesale" id="tab1" style="flex: 1; padding: 12px 20px; text-align: center; font-weight: 700; color: white; background: #ff6f00; border-radius: 8px 8px 0 0; cursor: pointer; border: 1px solid #ff6f00; border-bottom: none; letter-spacing: 0.5px; user-select: none;">
+      Wholesale Tyre Price List
+    </div>
+    <div class="tab" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-alloy" id="tab2" style="flex: 1; padding: 12px 20px; text-align: center; font-weight: 700; color: #666; background: #fff3e0; border: 1px solid transparent; border-bottom: none; cursor: pointer; letter-spacing: 0.5px; user-select: none;">
+      Alloy Wheel Details
+    </div>
+  </div>
+
+  <!-- Tab panels -->
+  <div id="tab-wholesale" class="tab-content" role="tabpanel" aria-labelledby="tab1" style="border: 1px solid #ff6f00; border-top: none; background: #fff3e0; padding: 20px 25px; border-radius: 0 0 8px 8px;">
+    <h2 style="color: #ff6f00; margin-top: 0;">Wholesale Tyre Price List</h2>
+    <table class="price-table" aria-label="Wholesale tyre price list" style="width: 100%; border-collapse: collapse; font-size: 1em; max-width: 700px;">
+      <thead>
+        <tr style="background-color: #ffd580;">
+          <th style="border: 1px solid #e0e0e0; padding: 7px;">Tyre Size</th>
+          <th style="border: 1px solid #e0e0e0; padding: 7px;">Wholesale Rate (₹)</th>
+          <th style="border: 1px solid #e0e0e0; padding: 7px;">Grip</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="border: 1px solid #e0e0e0; padding: 7px;">12</td><td style="border: 1px solid #e0e0e0; padding: 7px;">900–1100</td><td style="border: 1px solid #e0e0e0; padding: 7px;">70–90%</td></tr>
+        <tr><td style="border: 1px solid #e0e0e0; padding: 7px;">13</td><td style="border: 1px solid #e0e0e0; padding: 7px;">1000–1400</td><td style="border: 1px solid #e0e0e0; padding: 7px;">70–90%</td></tr>
+        <tr><td style="border: 1px solid #e0e0e0; padding: 7px;">14</td><td style="border: 1px solid #e0e0e0; padding: 7px;">1100–1700</td><td style="border: 1px solid #e0e0e0; padding: 7px;">70–90%</td></tr>
+        <tr><td style="border: 1px solid #e0e0e0; padding: 7px;">15</td><td style="border: 1px solid #e0e0e0; padding: 7px;">1100–2500</td><td style="border: 1px solid #e0e0e0; padding: 7px;">70–90%</td></tr>
+        <tr><td style="border: 1px solid #e0e0e0; padding: 7px;">16</td><td style="border: 1px solid #e0e0e0; padding: 7px;">1500–2500</td><td style="border: 1px solid #e0e0e0; padding: 7px;">70–90%</td></tr>
+        <tr><td style="border: 1px solid #e0e0e0; padding: 7px;">17 &amp; 18</td><td style="border: 1px solid #e0e0e0; padding: 7px;">1650–4000</td><td style="border: 1px solid #e0e0e0; padding: 7px;">70–90%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="tab-alloy" class="tab-content" role="tabpanel" aria-labelledby="tab2" hidden style="border: 1px solid #ff6f00; border-top: none; background: #fff3e0; padding: 20px 25px; border-radius: 0 0 8px 8px;">
+    <h2 style="color: #ff6f00; margin-top: 0;">Alloy Wheel Details</h2>
+    <table style="border-collapse: collapse; width: 100%; max-width: 700px; font-family: Arial, sans-serif; font-size: 1em;">
+      <thead style="background-color: #ff6f00; color: white; text-align: left;">
+        <tr>
+          <th style="padding: 7px; border: 1px solid #e0e0e0;">Alloy Wheel Size (inch)</th>
+          <th style="padding: 7px; border: 1px solid #e0e0e0;">Price (₹)</th>
+          <th style="padding: 7px; border: 1px solid #e0e0e0;">Hole</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding: 7px; border: 1px solid #e0e0e0;">12 Inch</td><td style="padding: 7px; border: 1px solid #e0e0e0;">10,000 - 12,000</td><td style="padding: 7px; border: 1px solid #e0e0e0;">4/5</td></tr>
+        <tr><td style="padding: 7px; border: 1px solid #e0e0e0;">13 Inch</td><td style="padding: 7px; border: 1px solid #e0e0e0;">10,000 - 12,000</td><td style="padding: 7px; border: 1px solid #e0e0e0;">4/5</td></tr>
+        <tr><td style="padding: 7px; border: 1px solid #e0e0e0;">14 Inch</td><td style="padding: 7px; border: 1px solid #e0e0e0;">12,000 - 15,000</td><td style="padding: 7px; border: 1px solid #e0e0e0;">4/5</td></tr>
+        <tr><td style="padding: 7px; border: 1px solid #e0e0e0;">15 Inch</td><td style="padding: 7px; border: 1px solid #e0e0e0;">15,000 - 20,000</td><td style="padding: 7px; border: 1px solid #e0e0e0;">4/5</td></tr>
+        <tr><td style="padding: 7px; border: 1px solid #e0e0e0;">16 Inch</td><td style="padding: 7px; border: 1px solid #e0e0e0;">18,000 - 24,000</td><td style="padding: 7px; border: 1px solid #e0e0e0;">4/5</td></tr>
+        <tr><td style="padding: 7px; border: 1px solid #e0e0e0;">17 Inch</td><td style="padding: 7px; border: 1px solid #e0e0e0;">25,000 - 28,000</td><td style="padding: 7px; border: 1px solid #e0e0e0;">4/5</td></tr>
+        <tr><td style="padding: 7px; border: 1px solid #e0e0e0;">18 Inch</td><td style="padding: 7px; border: 1px solid #e0e0e0;">25,000 - 28,000</td><td style="padding: 7px; border: 1px solid #e0e0e0;">4/5</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const wholesalePanel = document.getElementById('tab-wholesale');
+  const alloyPanel = document.getElementById('tab-alloy');
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      // Remove active on tabs
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.style.background = '#fff3e0';
+        t.style.color = '#666';
+        t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
+        t.style.borderColor = 'transparent';
+      });
+      // Set active on clicked tab
+      tab.classList.add('active');
+      tab.style.background = '#ff6f00';
+      tab.style.color = '#fff';
+      tab.style.borderColor = '#ff6f00';
+      tab.setAttribute('aria-selected', 'true');
+      tab.setAttribute('tabindex', '0');
+
+      // Show/hide panels
+      if (i === 0) {
+        wholesalePanel.hidden = false;
+        alloyPanel.hidden = true;
+      } else {
+        wholesalePanel.hidden = true;
+        alloyPanel.hidden = false;
+      }
+    });
+  });
+</script>
+
+
+    <table class="price-table" aria-label="Wholesale tyre brand price list" style="margin-top: 20px;">
+      <thead>
+        <tr><th>Brand/Size</th><th>Wholesale Rate (₹)</th><th>Grip</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Apollo (13–18)</td><td>1350 (fix)</td><td>70–90%</td></tr>
+        <tr><td>CEAT (13–16–17)</td><td>1200 (fix)</td><td>70–90%</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- PART 3: Tabs with Accordion FAQ, Other Tyre Categories, and Customer Questions -->
+  <section class="tab-container" aria-label="Tyre information tabs" role="region">
+    <div class="tabs" role="tablist">
+      <div class="tab active" role="tab" tabindex="0" aria-selected="true" aria-controls="faq-tab" id="tab1">FAQ</div>
+      <div class="tab" role="tab" tabindex="-1" aria-selected="false" aria-controls="other-tab" id="tab2">Other Tyre Categories</div>
+      <div class="tab" role="tab" tabindex="-1" aria-selected="false" aria-controls="questions-tab" id="tab3">Common Customer Questions</div>
+    </div>
+
+    <div id="faq-tab" class="tab-content" role="tabpanel" aria-labelledby="tab1">
+      <!-- Accordion inside FAQ tab -->
+      <div>
+        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="faq1">🔧 टायर संबंधित शिकायतें</div>
+        <div class="accordion-content" id="faq1" role="region" aria-hidden="true">
+          <ul>
+            <li>🚗 टायर फट गया है</li>
+            <li>💨 रिपेयरिंग की जगह से हवा निकल रही है</li>
+            <li>🎈 टायर फूल रहा है या फिट नहीं हो रहा है</li>
+            <li>😕 टायर पसंद नहीं आया</li>
+          </ul>
+        </div>
+
+        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="faq2">📅 कितने दिन पहले टायर लिया?</div>
+        <div class="accordion-content" id="faq2" role="region" aria-hidden="true">
+          <ul>
+            <li>अगर 2–3 दिन के अंदर लिया गया है: तुरंत रिप्लेस करें</li>
+            <li>अगर 3 महीने के अंदर लिया गया है: रिपेयर या रिप्लेस किया जा सकता है</li>
+            <li>अंतिम फैसला वेयरहाउस विजिट के समय लिया जाएगा – जो ग्राहक के लिए बेहतर होगा</li>
+          </ul>
+        </div>
+
+        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="faq3">💰 भुगतान और रिफंड नीति</div>
+        <div class="accordion-content" id="faq3" role="region" aria-hidden="true">
+          <ul>
+            <li>रिफंड नहीं होता है</li>
+            <li>अगर आप चाहें तो अपने संतुष्टि के अनुसार दूसरा टायर ले सकते हैं</li>
+          </ul>
+        </div>
+
+        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="faq4">💵 कीमत के हिसाब से समाधान</div>
+        <div class="accordion-content" id="faq4" role="region" aria-hidden="true">
+          <ul>
+            <li>अगर टायर महंगा है: रिप्लेसमेंट पर विचार करें</li>
+            <li>अगर टायर सस्ता है: रिपेयर पर विचार करें</li>
+          </ul>
+        </div>
+
+        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="faq5">💡 अतिरिक्त सलाह</div>
+        <div class="accordion-content" id="faq5" role="region" aria-hidden="true">
+          <ul>
+            <li>टायर में ट्यूब डालने से उसकी लाइफ दोगुनी हो जाती है</li>
+            <li>हमेशा बिल और वारंटी नोट दिखाएं ताकि सबसे अच्छा समाधान मिल सके</li>
+          </ul>
+        </div>
+
+        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="faq6">📞 संपर्क जानकारी</div>
+        <div class="accordion-content" id="faq6" role="region" aria-hidden="true">
+          <p><strong>आदित्य जी</strong> -8602340131 संपर्क करें</p>
+          <p><strong>Chourasiya Tyres</strong>, नई लोहा मंडी, तिरंगा चौराहा, देवास नाका, इंदौर<br />
+            <strong>फोन:</strong> 6267019925</p>
+			<p>ग्राहक से बिल माँगें कि क्या बिल में गारंटी या वारंटी लिखी गई थी। यदि दी गई है, तो उसके अनुसार जो भी सबसे अच्छा समाधान होगा,
+			वह ग्राहक को प्रदान किया जाएगा।<p>
+        </div>
+      </div>
+    </div>
+
+    <div id="other-tab" class="tab-content" role="tabpanel" aria-labelledby="tab2" hidden>
+      <ol>
+        <li>One Number OK – ₹11000–11500, 90%+ grip, minor fault.</li>
+        <li>Two Number OK – ₹8000–10000, medium condition, some scratches.</li>
+        <li>Three Number OK – ₹6000–7000, ordinary, repairable.</li>
+        <li>PPU (Pay Per Use) – ₹3000–5000, 30–40% grip, company returns.</li>
+      </ol>
+      <ul>
+        <li>Casing: One Number ₹4800–5000, Two Number ₹3800–4200, Three Number ₹1800–2000</li>
+        <li>Bead: One ₹8000–8500, Two ₹4000–6000, Three: Only after repair</li>
+        <li>Side Cut Tyre: One ₹8500–9500, Two ₹6500–7500, Three: Only after repair</li>
+      </ul>
+    </div>
+
+    <div id="questions-tab" class="tab-content" role="tabpanel" aria-labelledby="tab3" hidden>
+      <ul>
+        <li>“OK tyre ka rate?” Answer: ₹4000–₹11000; Ask grade and needs.</li>
+        <li>“Bulk tyre chahiye!” Refer to Ram Sir.</li>
+        <li>“Photo/Rate batao!” Ask customer to visit for rate finalization.</li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    // Tab switching logic
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = {
+      faq: document.getElementById('faq-tab'),
+      other: document.getElementById('other-tab'),
+      questions: document.getElementById('questions-tab'),
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs & reset aria
+        tabs.forEach((t) => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+          t.setAttribute('tabindex', '-1');
+        });
+        // Hide all tab contents
+        Object.values(tabContents).forEach((content) => {
+          content.hidden = true;
+        });
+        // Activate clicked tab
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        tab.setAttribute('tabindex', '0');
+
+        // Show related panel
+        if (index === 0) tabContents.faq.hidden = false;
+        else if (index === 1) tabContents.other.hidden = false;
+        else if (index === 2) tabContents.questions.hidden = false;
+      });
+    });
+
+    // Accordion logic within FAQ tab for keyboard and click accessibility
+    const faqAccHeaders = document.querySelectorAll('#faq-tab .accordion-header');
+    faqAccHeaders.forEach((header) => {
+      header.addEventListener('click', () => toggleAccordion(header));
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleAccordion(header);
+        }
+      });
+    });
+
+    function toggleAccordion(header) {
+      const expanded = header.classList.contains('active');
+      faqAccHeaders.forEach((h) => {
+        h.classList.remove('active');
+        h.setAttribute('aria-expanded', 'false');
+        h.nextElementSibling.style.display = 'none';
+        h.nextElementSibling.setAttribute('aria-hidden', 'true');
+      });
+      if (!expanded) {
+        header.classList.add('active');
+        header.setAttribute('aria-expanded', 'true');
+        header.nextElementSibling.style.display = 'block';
+        header.nextElementSibling.setAttribute('aria-hidden', 'false');
+      }
+    }
+  </script>
+</body>
+</html>
